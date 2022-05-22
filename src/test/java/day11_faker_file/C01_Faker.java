@@ -1,0 +1,59 @@
+package day11_faker_file;
+
+import com.github.javafaker.Faker;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import utilities.TestBase;
+
+public class C01_Faker extends TestBase {
+
+    @Test
+    public void test01() throws InterruptedException {
+        // facebook anasayfaya gidip
+        driver.get("https://www.facebook.com");
+        // yeni kayit olustur butonuna basin
+        WebElement button= driver.findElement(By.xpath("//*[text()='Yeni Hesap Oluştur']"));
+        button.click();
+        // isim kutusunu locate edip
+        WebElement isimKutusu= driver.findElement(By.xpath("//input[@name='firstname']"));
+        // geriye kalanları TAB ile dolasarak
+        // formu doldurun
+        Actions actions= new Actions(driver);
+        Faker faker=new Faker();
+        String fakeMail=faker.internet().emailAddress();
+        actions.click(isimKutusu).
+                sendKeys(faker.name().firstName()).
+                sendKeys(Keys.TAB).
+                sendKeys(faker.name().lastName()).
+                sendKeys(Keys.TAB).
+                sendKeys(fakeMail).
+                sendKeys(Keys.TAB).
+                sendKeys(fakeMail).
+                sendKeys(Keys.TAB).
+                sendKeys(faker.internet().password()).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys("12").
+                sendKeys(Keys.TAB).
+                sendKeys("Oca").
+                sendKeys(Keys.TAB).
+                sendKeys("2000").
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.RIGHT).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.ENTER).
+                perform();
+        Thread.sleep(10000);
+
+
+
+
+    }
+}
