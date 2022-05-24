@@ -1,4 +1,4 @@
-package day12_senkronizasyon;
+package day12_senkronizasyon_ExplicitlyWait;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
