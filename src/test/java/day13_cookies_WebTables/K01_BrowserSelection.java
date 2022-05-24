@@ -51,12 +51,11 @@ public class K01_BrowserSelection extends TestBase {
         List<WebElement> cellAddress=new ArrayList<>();
 
         for (int i = 1; i <= rowCount; i++) {
-            cellAddress.add(driver.findElement(By.xpath("//div/table[2]/tbody//tr[" + i + "]//td[3]")));
+            cellAddress.add(driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[3]")));
         }
-        for (WebElement each: cellAddress
-             ) {
-          System.out.println("The Cell Value is : " + each.getText());
-        }
+       cellAddress.stream().forEach(t-> System.out.println(t.getText()));  // LAMBDA İLE YAZDIRDİK
+        // for (WebElement each: cellAddress) {System.out.println("The Cell Value is : " + each.getText()); }
+                         // foreach ile yazdirdik
         }
     }
 
